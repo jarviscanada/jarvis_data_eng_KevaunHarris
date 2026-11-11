@@ -1,6 +1,5 @@
 \c host_agent;
 
--- Create a host_info table
 CREATE TABLE IF NOT EXISTS PUBLIC.host_info
   (
      id               SERIAL NOT NULL,
@@ -16,7 +15,6 @@ CREATE TABLE IF NOT EXISTS PUBLIC.host_info
      CONSTRAINT host_info_un UNIQUE (hostname)
   );
 
--- Insert three sample data rows
 INSERT INTO 
 	host_info (id, hostname, cpu_number, cpu_architecture, cpu_model, cpu_mhz, l2_cache, "timestamp", total_mem) 
 VALUES
@@ -32,7 +30,6 @@ INSERT INTO
 VALUES
 	(3, 'noe2', 1, 'x86_64', 'Intel(R) Xeon(R) CPU @ 2.30GHz', 2300, 256, '2019-05-29 17:49:53.000', 601324);
 
--- Verify inserted data
 SELECT
 	* 
 FROM host_info;
@@ -50,7 +47,6 @@ CREATE TABLE IF NOT EXISTS PUBLIC.host_usage
      host_info(id)
   );
 
--- Insert sample data
 INSERT INTO 
 	host_usage ("timestamp", host_id, memory_free, cpu_idle, cpu_kernel, disk_io, disk_available)
 VALUES
@@ -61,7 +57,6 @@ INSERT INTO
 VALUES
 	('2019-05-29 15:01:00.000', 1, 200000, 90, 4, 2, 3);
 
--- Verify inserted data
 SELECT 
 	* 
 FROM host_usage;
